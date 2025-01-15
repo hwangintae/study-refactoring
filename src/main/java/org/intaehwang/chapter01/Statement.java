@@ -7,12 +7,10 @@ import java.util.Map;
 public class Statement {
     private final Invoice invoice;
     private final Map<String, Play> plays;
-    private String result;
 
     public Statement(Invoice invoice, Map<String, Play> plays) {
         this.invoice = invoice;
         this.plays = plays;
-        this.result = "청구 내역 (고객명: " + invoice.customer() + ")\n";
     }
 
     public Invoice getInvoice() {
@@ -24,17 +22,16 @@ public class Statement {
     }
 
     public String getResult() {
-        int totalAmount = 0;
+        String result = "청구 내역 (고객명: " + invoice.customer() + ")\n";
         for (Performance perf : invoice.performances()) {
             // 청구 내욕을 출력한다.
             result += "  " + playFor(perf).name() + ": " + usd(amountFor(perf)) + " (" + perf.audience() + "석)\n";
-            totalAmount += amountFor(perf);
         }
 
-        result += "총액: " + usd(totalAmount) + "\n";
+        result += "총액: " + usd(totalAmount()) + "\n";
         result += "적립 포인트: " + totalVolumeCredits() + "점\n";
 
-        return this.result;
+        return result;
     }
 
     private int amountFor(Performance aPerformance) {
@@ -83,6 +80,16 @@ public class Statement {
         for (Performance perf : invoice.performances()) {
             // 포인트를 적립한다.
             result += volumeCreditsFor(perf);
+        }
+
+        return result;
+    }
+
+    private int totalAmount() {
+        int result = 0;
+        for (Performance perf : invoice.performances()) {
+            // 청구 내욕을 출력한다.
+            result += amountFor(perf);
         }
 
         return result;
