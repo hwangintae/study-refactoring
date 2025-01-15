@@ -31,14 +31,8 @@ public class Statement {
             totalAmount += amountFor(perf);
         }
 
-        int volumeCredits = 0;
-        for (Performance perf : invoice.performances()) {
-            // 포인트를 적립한다.
-            volumeCredits += volumeCreditsFor(perf);
-        }
-
         result += "총액: " + usd(totalAmount) + "\n";
-        result += "적립 포인트: " + volumeCredits + "점\n";
+        result += "적립 포인트: " + totalVolumeCredits() + "점\n";
 
         return this.result;
     }
@@ -82,5 +76,15 @@ public class Statement {
 
     private String usd(double aNumber) {
         return NumberFormat.getCurrencyInstance(Locale.US).format(aNumber / 100.0);
+    }
+
+    private int totalVolumeCredits() {
+        int result = 0;
+        for (Performance perf : invoice.performances()) {
+            // 포인트를 적립한다.
+            result += volumeCreditsFor(perf);
+        }
+
+        return result;
     }
 }
