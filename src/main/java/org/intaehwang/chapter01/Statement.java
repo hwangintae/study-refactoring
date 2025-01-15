@@ -29,7 +29,7 @@ public class Statement {
 
     public String getResult() {
         for (Performance perf : invoice.performances()) {
-            int thisAmount = amountFor(perf, playFor(perf));
+            int thisAmount = amountFor(perf);
 
             // 포인트를 적립한다.
             volumeCredits += Math.max(perf.audience() - 30, 0);
@@ -48,9 +48,9 @@ public class Statement {
         return this.result;
     }
 
-    private int amountFor(Performance aPerformance, Play play) {
+    private int amountFor(Performance aPerformance) {
         int result = 0;
-        switch (play.type()) {
+        switch (playFor(aPerformance).type()) {
             case "tragedy": // 비극
                 result = 40_000;
                 if (aPerformance.audience() > 30) {
@@ -65,7 +65,7 @@ public class Statement {
                 result += 300 * aPerformance.audience();
                 break;
             default:
-                throw new IllegalArgumentException("알 수 없는 장르: " + play.type());
+                throw new IllegalArgumentException("알 수 없는 장르: " + playFor(aPerformance).type());
         }
 
         return result;
