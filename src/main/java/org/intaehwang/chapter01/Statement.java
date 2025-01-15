@@ -11,8 +11,6 @@ public class Statement {
     private int volumeCredits = 0;
     private String result;
 
-    NumberFormat format = NumberFormat.getCurrencyInstance(Locale.US);
-
     public Statement(Invoice invoice, Map<String, Play> plays) {
         this.invoice = invoice;
         this.plays = plays;
@@ -34,10 +32,10 @@ public class Statement {
             volumeCredits += volumeCreditsFor(perf);
 
             // 청구 내욕을 출력한다.
-            result += "  " + playFor(perf).name() + ": " + format.format(amountFor(perf) / 100.0) + " (" + perf.audience() + "석)\n";
+            result += "  " + playFor(perf).name() + ": " + usd(amountFor(perf)) + " (" + perf.audience() + "석)\n";
             totalAmount += amountFor(perf);
         }
-        result += "총액: " + format.format(totalAmount / 100.0) + "\n";
+        result += "총액: " + usd(totalAmount) + "\n";
         result += "적립 포인트: " + volumeCredits + "점\n";
 
         return this.result;
@@ -78,5 +76,9 @@ public class Statement {
         }
 
         return result;
+    }
+
+    private String usd(double aNumber) {
+        return NumberFormat.getCurrencyInstance(Locale.US).format(aNumber / 100.0);
     }
 }
