@@ -1,97 +1,25 @@
 package org.intaehwang.chapter01;
 
-import java.text.NumberFormat;
-import java.util.Locale;
+import java.util.List;
 import java.util.Map;
 
-public class Statement {
-    private final Invoice invoice;
-    private final Map<String, Play> plays;
+public record Statement(Invoice invoice, Map<String, Play> plays) {
 
-    public Statement(Invoice invoice, Map<String, Play> plays) {
-        this.invoice = invoice;
-        this.plays = plays;
+    public String statement(Invoice invoice, Map<String, Play> plays) {
+        String customer = invoice.customer();
+        List<Performance> performances = invoice.performances().stream()
+                .map(this::enrichPerformance)
+                .toList();
+
+        StatementData statementData = new StatementData(customer, performances);
+
+        return new RenderPlainText(statementData, invoice, plays).renderPlainText();
     }
 
-    public Invoice getInvoice() {
-        return this.invoice;
+    private Performance enrichPerformance(Performance aPerformance) {
+        return aPerformance;
     }
 
-    public Map<String, Play> getPlays() {
-        return this.plays;
-    }
-
-    public String getResult() {
-        String result = "청구 내역 (고객명: " + invoice.customer() + ")\n";
-        for (Performance perf : invoice.performances()) {
-            // 청구 내욕을 출력한다.
-            result += "  " + playFor(perf).name() + ": " + usd(amountFor(perf)) + " (" + perf.audience() + "석)\n";
-        }
-
-        result += "총액: " + usd(totalAmount()) + "\n";
-        result += "적립 포인트: " + totalVolumeCredits() + "점\n";
-
-        return result;
-    }
-
-    private int amountFor(Performance aPerformance) {
-        int result = 0;
-        switch (playFor(aPerformance).type()) {
-            case "tragedy": // 비극
-                result = 40_000;
-                if (aPerformance.audience() > 30) {
-                    result += 1_000 * (aPerformance.audience() - 30);
-                }
-                break;
-            case "comedy": // 희극
-                result = 30_000;
-                if (aPerformance.audience() > 20) {
-                    result += 10_000 + 500 * (aPerformance.audience() - 20);
-                }
-                result += 300 * aPerformance.audience();
-                break;
-            default:
-                throw new IllegalArgumentException("알 수 없는 장르: " + playFor(aPerformance).type());
-        }
-
-        return result;
-    }
-
-    private Play playFor(Performance aPerformance) {
-        return plays.get(aPerformance.playId());
-    }
-
-    private int volumeCreditsFor(Performance aPerformance) {
-        int result = 0;
-        result += Math.max(aPerformance.audience() - 30, 0);
-        if ("comedy".equals(playFor(aPerformance).type())) {
-            result += aPerformance.audience() / 5;
-        }
-
-        return result;
-    }
-
-    private String usd(double aNumber) {
-        return NumberFormat.getCurrencyInstance(Locale.US).format(aNumber / 100.0);
-    }
-
-    private int totalVolumeCredits() {
-        int result = 0;
-        for (Performance perf : invoice.performances()) {
-            // 포인트를 적립한다.
-            result += volumeCreditsFor(perf);
-        }
-
-        return result;
-    }
-
-    private int totalAmount() {
-        int result = 0;
-        for (Performance perf : invoice.performances()) {
-            // 청구 내욕을 출력한다.
-            result += amountFor(perf);
-        }
-
-        return result;
+    public record StatementData(String customer, List<Performance> performances) {
     }
 }
