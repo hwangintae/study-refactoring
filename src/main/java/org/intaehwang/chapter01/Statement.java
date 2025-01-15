@@ -72,7 +72,31 @@ public record Statement(Invoice invoice, Map<String, Play> plays) {
         return result;
     }
 
+    private int totalVolumeCredits(List<EnrichPerformance> data) {
+        return data.stream()
+                .map(EnrichPerformance::getVolumeCredits)
+                .reduce(0, Integer::sum);
+    }
 
-    public record StatementData(String customer, List<EnrichPerformance> performances) {
+    private int totalAmount(List<EnrichPerformance> data) {
+        return data.stream()
+                .map(EnrichPerformance::getAmount)
+                .reduce(0, Integer::sum);
+    }
+
+
+    @Getter
+    public class StatementData {
+        private final String customer;
+        private final List<EnrichPerformance> performances;
+        private final int totalAmount;
+        private final int totalVolumeCredits;
+
+        public StatementData(String customer, List<EnrichPerformance> performances) {
+            this.customer = customer;
+            this.performances = performances;
+            this.totalAmount = totalAmount(performances);
+            this.totalVolumeCredits = totalVolumeCredits(performances);
+        }
     }
 }
