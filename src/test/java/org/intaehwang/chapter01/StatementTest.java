@@ -30,7 +30,7 @@ class StatementTest {
         Statement statement = new Statement(invoice, plays);
 
         // when
-        String result = statement.getResult();
+        String result = statement.statement();
 
         // then
         String answer = """
