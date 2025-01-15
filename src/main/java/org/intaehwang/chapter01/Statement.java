@@ -7,8 +7,6 @@ import java.util.Map;
 public class Statement {
     private final Invoice invoice;
     private final Map<String, Play> plays;
-    private int totalAmount = 0;
-    private int volumeCredits = 0;
     private String result;
 
     public Statement(Invoice invoice, Map<String, Play> plays) {
@@ -26,15 +24,19 @@ public class Statement {
     }
 
     public String getResult() {
+        int totalAmount = 0;
         for (Performance perf : invoice.performances()) {
-
-            // 포인트를 적립한다.
-            volumeCredits += volumeCreditsFor(perf);
-
             // 청구 내욕을 출력한다.
             result += "  " + playFor(perf).name() + ": " + usd(amountFor(perf)) + " (" + perf.audience() + "석)\n";
             totalAmount += amountFor(perf);
         }
+
+        int volumeCredits = 0;
+        for (Performance perf : invoice.performances()) {
+            // 포인트를 적립한다.
+            volumeCredits += volumeCreditsFor(perf);
+        }
+
         result += "총액: " + usd(totalAmount) + "\n";
         result += "적립 포인트: " + volumeCredits + "점\n";
 
