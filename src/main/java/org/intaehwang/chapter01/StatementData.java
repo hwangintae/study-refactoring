@@ -1,6 +1,7 @@
 package org.intaehwang.chapter01;
 
 import lombok.Getter;
+import org.intaehwang.chapter01.calculator.PerformanceCalculator;
 
 import java.util.List;
 import java.util.Map;
@@ -50,11 +51,11 @@ public class StatementData {
     }
 
     private int amountFor(Performance aPerformance) {
-        return new PerformanceCalculator(aPerformance, playFor(aPerformance)).amount();
+        return PerformanceCalculator.create(aPerformance, playFor(aPerformance)).amount();
     }
 
     private int volumeCreditsFor(Performance aPerformance) {
-        return new PerformanceCalculator(aPerformance, playFor(aPerformance)).volumeCredits();
+        return PerformanceCalculator.create(aPerformance, playFor(aPerformance)).volumeCredits();
     }
 
     private int totalVolumeCredits(List<EnrichPerformance> data) {
