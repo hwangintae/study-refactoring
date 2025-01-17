@@ -13,7 +13,7 @@ public class StatementData {
     private final int totalAmount;
     private final int totalVolumeCredits;
 
-    public StatementData (Invoice invoice, Map<String, Play> plays) {
+    protected StatementData (Invoice invoice, Map<String, Play> plays) {
         this.customer = invoice.customer();
         this.plays = plays;
         this.performances = invoice.performances().stream()
@@ -21,6 +21,10 @@ public class StatementData {
                 .toList();
         this.totalAmount = totalAmount(performances);
         this.totalVolumeCredits = totalVolumeCredits(performances);
+    }
+
+    public static StatementData create(Invoice invoice, Map<String, Play> plays) {
+        return new StatementData(invoice, plays);
     }
 
     @Getter
@@ -32,10 +36,11 @@ public class StatementData {
         private final int volumeCredits;
 
         public EnrichPerformance(Performance aPerformance) {
+            PerformanceCalculator calculator = new PerformanceCalculator(aPerformance, playFor(aPerformance));
             this.playId = aPerformance.playId();
             this.audience = aPerformance.audience();
-            this.play = playFor(aPerformance);
-            this.amount = amountFor(aPerformance);
+            this.play = calculator.getPlay();
+            this.amount = calculator.amount();
             this.volumeCredits = volumeCreditsFor(aPerformance);
         }
     }
@@ -45,26 +50,7 @@ public class StatementData {
     }
 
     private int amountFor(Performance aPerformance) {
-        int result = 0;
-        switch (playFor(aPerformance).type()) {
-            case "tragedy": // 비극
-                result = 40_000;
-                if (aPerformance.audience() > 30) {
-                    result += 1_000 * (aPerformance.audience() - 30);
-                }
-                break;
-            case "comedy": // 희극
-                result = 30_000;
-                if (aPerformance.audience() > 20) {
-                    result += 10_000 + 500 * (aPerformance.audience() - 20);
-                }
-                result += 300 * aPerformance.audience();
-                break;
-            default:
-                throw new IllegalArgumentException("알 수 없는 장르: " + playFor(aPerformance).type());
-        }
-
-        return result;
+        return new PerformanceCalculator(aPerformance, playFor(aPerformance)).amount();
     }
 
     private int volumeCreditsFor(Performance aPerformance) {
