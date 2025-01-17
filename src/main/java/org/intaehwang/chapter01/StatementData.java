@@ -41,7 +41,7 @@ public class StatementData {
             this.audience = aPerformance.audience();
             this.play = calculator.getPlay();
             this.amount = calculator.amount();
-            this.volumeCredits = volumeCreditsFor(aPerformance);
+            this.volumeCredits = calculator.volumeCredits();
         }
     }
 
@@ -54,13 +54,7 @@ public class StatementData {
     }
 
     private int volumeCreditsFor(Performance aPerformance) {
-        int result = 0;
-        result += Math.max(aPerformance.audience() - 30, 0);
-        if ("comedy".equals(playFor(aPerformance).type())) {
-            result += aPerformance.audience() / 5;
-        }
-
-        return result;
+        return new PerformanceCalculator(aPerformance, playFor(aPerformance)).volumeCredits();
     }
 
     private int totalVolumeCredits(List<EnrichPerformance> data) {
