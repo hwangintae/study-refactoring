@@ -10,7 +10,7 @@ import java.util.Map;
 public record Statement(Invoice invoice, Map<String, Play> plays) {
 
     public String statement() {
-        return renderPlainText(new StatementData(invoice, plays));
+        return renderPlainText(StatementData.create(invoice, plays));
     }
 
     private String renderPlainText(StatementData data) {
