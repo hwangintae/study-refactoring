@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public record Statement(Invoice invoice, Map<String, Play> plays) {
+public class Statement {
 
-    public String statement() {
+    public String statement(Invoice invoice, Map<String, Play> plays) {
         return renderPlainText(StatementData.create(invoice, plays));
     }
 
@@ -34,12 +34,12 @@ public record Statement(Invoice invoice, Map<String, Play> plays) {
         List<String> result = List.of(
                 "<h1>청구 내역 (고객명: " + data.getCustomer() + ")</h1>\n",
                 "<table>\n",
-                "<tr><th>연극</th><th>좌석 수</th><th>금액</th></tr>",
+                "<tr><th>연극</th><th>좌석 수</th><th>금액</th></tr>\n",
                 data.getPerformances().stream()
                         .map(perf -> "  <tr><td>" + perf.getPlay().name() + "</td><td>(" + perf.getAudience() + ")</td>" +
                                 "<td>" + usd(perf.getAmount()) + "</td></tr>\n"
                         ).reduce("", (a, b) -> a + b),
-                "</table>\n>",
+                "</table>\n",
                 "<p>총액: <em>" + usd(data.getTotalAmount()) + "</em></p>\n",
                 "<p>적립 포인트: <em>" + data.getTotalVolumeCredits() + "</em>점</p>\n"
         );
