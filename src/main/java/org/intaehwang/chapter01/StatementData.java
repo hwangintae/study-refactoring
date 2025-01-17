@@ -36,7 +36,7 @@ public class StatementData {
         private final int volumeCredits;
 
         public EnrichPerformance(Performance aPerformance) {
-            PerformanceCalculator calculator = new PerformanceCalculator(aPerformance, playFor(aPerformance));
+            PerformanceCalculator calculator = PerformanceCalculator.create(aPerformance, playFor(aPerformance));
             this.playId = aPerformance.playId();
             this.audience = aPerformance.audience();
             this.play = calculator.getPlay();

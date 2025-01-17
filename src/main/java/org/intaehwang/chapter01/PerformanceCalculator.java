@@ -12,6 +12,10 @@ public class PerformanceCalculator {
         this.play = aPlay;
     }
 
+    public static PerformanceCalculator create(Performance aPerformance, Play aPlay) {
+        return new PerformanceCalculator(aPerformance, aPlay);
+    }
+
     public int amount() {
         int result = 0;
         switch (this.play.type()) {
