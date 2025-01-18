@@ -1,1 +1,10 @@
-# study-refactoring
+# 리팩터링 2판 읽기 모임
+---
+- 리팩터링 2판을 읽고 [(책 링크)](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=236186172)
+- 모든 예제를 작성하고
+- 느낀점을 공유하기 위한 repository 입니다.
+
+# 목차
+1. chapter01 리팩터링: 첫 번째 예시
+   - [[학습기록]](https://github.com/hwangintae/study-refactoring/blob/main/src/main/java/org/intaehwang/chapter01/chapter01.md)
+   - [[commit 목록]](https://github.com/hwangintae/study-refactoring/commits/main/)
