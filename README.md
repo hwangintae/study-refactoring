@@ -11,4 +11,4 @@
 2. chapter02 리팩터링 원칙
    - [[학습기록]](https://github.com/hwangintae/study-refactoring/pull/1)
 3. chapter03 코드에서 나는 악취
-   - [[학습기록]](https://github.com/hwangintae/study-refactoring/pull/1)
+   - [[학습기록]](https://github.com/hwangintae/study-refactoring/pull/2)
