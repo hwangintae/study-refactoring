@@ -8,3 +8,7 @@
 1. chapter01 리팩터링: 첫 번째 예시
    - [[학습기록]](https://github.com/hwangintae/study-refactoring/blob/main/src/main/java/org/intaehwang/chapter01/chapter01.md)
    - [[commit 목록]](https://github.com/hwangintae/study-refactoring/commits/main/)
+2. chapter02 리팩터링 원칙
+   - [[학습기록]](https://github.com/hwangintae/study-refactoring/pull/1)
+3. chapter03 코드에서 나는 악취
+   - [[학습기록]](https://github.com/hwangintae/study-refactoring/pull/2)
