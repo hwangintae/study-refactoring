@@ -31,4 +31,18 @@ class Chapter04Test {
         // then
         assertThat(profit).isEqualTo(230);
     }
+
+    @Test
+    public void changeProductionTest() {
+        // given
+        asia.getProducers().get(0).setProduction("20");
+
+        // when
+        int shortfall = asia.getShortfall();
+        int profit = asia.getProfit();
+
+        // then
+        assertThat(shortfall).isEqualTo(-6);
+        assertThat(profit).isEqualTo(292);
+    }
 }
