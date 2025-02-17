@@ -1,5 +1,6 @@
 package org.intaehwang.chapter04;
 
+import lombok.Builder;
 import lombok.Getter;
 
 import java.util.List;
@@ -11,6 +12,7 @@ public class ProvinceData {
     private final int demand;
     private final int price;
 
+    @Builder
     protected ProvinceData(String name, List<Producer> producers, int demand, int price) {
         this.name = name;
         this.producers = producers;
