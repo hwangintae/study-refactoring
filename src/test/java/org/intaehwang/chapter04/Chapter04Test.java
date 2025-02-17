@@ -1,26 +1,34 @@
 package org.intaehwang.chapter04;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class Chapter04Test {
 
+    private Province asia;
+
+    @BeforeEach
+    void setUp() {
+        asia = Province.create(ProvinceData.getSample());
+    }
+
     @Test
     public void shortfailTest() {
-        // given
-        Province asia = Province.create(ProvinceData.getSample());
-
         // when
         int shortfall = asia.getShortfall();
 
         // then
-        // junit의 Assertions 사용
-        assertEquals(5, shortfall);
-
-        // assertj의 Assertions 사용
         assertThat(shortfall).isEqualTo(5);
+    }
+
+    @Test
+    public void profitTest() {
+        // when
+        int profit = asia.getProfit();
+
+        // then
+        assertThat(profit).isEqualTo(230);
     }
 }
