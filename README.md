@@ -12,3 +12,6 @@
    - [[학습기록]](https://github.com/hwangintae/study-refactoring/pull/1)
 3. chapter03 코드에서 나는 악취
    - [[학습기록]](https://github.com/hwangintae/study-refactoring/pull/2)
+4. chapter04 테스트 구축하기
+   - [[학습기록]](https://github.com/hwangintae/study-refactoring/pull/3)
+   - [[commit 목록]](https://github.com/hwangintae/study-refactoring/pull/3/commits)
