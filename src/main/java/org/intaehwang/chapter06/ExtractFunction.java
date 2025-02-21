@@ -16,17 +16,25 @@ public class ExtractFunction {
             outstanding += o.getAmount();
         }
 
-        LocalDate today = new Clock().now();
-        invoice.setDueDate(today.plusDays(30));
+        recordDueDate(invoice);
 
-        log.info("고객명: {}", invoice.getCustomer());
-        log.info("채무액: {}", outstanding);
-        log.info("마감일: {}", invoice.getDueDate());
+        printDetails(invoice, outstanding);
     }
 
     public void printBanner() {
         log.info("*******************");
         log.info("**** 고객 채무 ****");
         log.info("*******************");
+    }
+
+    public void printDetails(Invoice invoice, int outstanding) {
+        log.info("고객명: {}", invoice.getCustomer());
+        log.info("채무액: {}", outstanding);
+        log.info("마감일: {}", invoice.getDueDate());
+    }
+
+    public void recordDueDate(Invoice invoice) {
+        LocalDate today = new Clock().now();
+        invoice.setDueDate(today.plusDays(30));
     }
 }
