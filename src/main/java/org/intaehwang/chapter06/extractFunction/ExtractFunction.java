@@ -1,24 +1,29 @@
-package org.intaehwang.chapter06;
+package org.intaehwang.chapter06.extractFunction;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.time.Instant;
 import java.time.LocalDate;
+import java.util.List;
 
 @Slf4j
 public class ExtractFunction {
     public void printOwing(Invoice invoice) {
-        int outstanding = 0;
 
         printBanner();
 
-        for (Order o : invoice.getOrders()) {
-            outstanding += o.getAmount();
-        }
+        int outstanding = calculateOutstanding(invoice);
 
         recordDueDate(invoice);
 
         printDetails(invoice, outstanding);
+    }
+
+    public int calculateOutstanding(Invoice invoice) {
+        List<Order> orders = invoice.getOrders();
+
+        return orders.stream()
+                .map(Order::getAmount)
+                .reduce(0, Integer::sum);
     }
 
     public void printBanner() {

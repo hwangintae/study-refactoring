@@ -1,4 +1,4 @@
-package org.intaehwang.chapter06;
+package org.intaehwang.chapter06.extractFunction;
 
 import lombok.Getter;
 import lombok.Setter;
