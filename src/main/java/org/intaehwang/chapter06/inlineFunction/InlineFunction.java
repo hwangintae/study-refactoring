@@ -11,12 +11,9 @@ public class InlineFunction {
     public List<List<String>> reportLines(Customer aCustomer) {
         List<List<String>> lines = new ArrayList<>();
 
-        gatherCustomerData(lines, aCustomer);
-        return lines;
-    }
+        lines.add(List.of("name", aCustomer.getName()));
+        lines.add(List.of("location", aCustomer.getLocation()));
 
-    public void gatherCustomerData(List<List<String>> out, Customer aCustomer) {
-        out.add(List.of("name", aCustomer.getName()));
-        out.add(List.of("location", aCustomer.getLocation()));
+        return lines;
     }
 }
