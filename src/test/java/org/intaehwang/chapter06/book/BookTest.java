@@ -1,7 +1,5 @@
 package org.intaehwang.chapter06.book;
 
-import org.assertj.core.api.Assertions;
-import org.assertj.core.groups.Tuple;
 import org.intaehwang.chapter06.comm.Address;
 import org.intaehwang.chapter06.comm.Customer;
 import org.junit.jupiter.api.Test;
@@ -26,7 +24,7 @@ class BookTest {
 
         // when
         List<Customer> result = someCustomers.stream()
-                .filter(book::inNewEngland)
+                .filter(c -> book.inNewEngland(c.getAddress().state()))
                 .toList();
 
         // then

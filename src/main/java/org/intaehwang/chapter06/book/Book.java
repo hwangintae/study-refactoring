@@ -1,7 +1,6 @@
 package org.intaehwang.chapter06.book;
 
 import lombok.Getter;
-import org.intaehwang.chapter06.comm.Customer;
 
 import java.util.List;
 
@@ -25,8 +24,8 @@ public class Book {
         this.reservations.add(customer);
     }
 
-    public boolean inNewEngland(Customer customer) {
+    public boolean inNewEngland(String state) {
         return List.of("MA", "CT", "ME", "VT", "NH", "RI")
-                .contains(customer.getAddress().state());
+                .contains(state);
     }
 }
