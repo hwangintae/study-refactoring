@@ -1,5 +1,6 @@
 package org.intaehwang.chapter06.extractFunction;
 
+import org.intaehwang.chapter06.comm.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -13,9 +14,9 @@ class ExtractFunctionTest {
         // given
         ExtractFunction extractFunction = new ExtractFunction();
         List<Order> orders = List.of(
-                new Order(10),
-                new Order(20),
-                new Order(30)
+                Order.of(10),
+                Order.of(20),
+                Order.of(30)
         );
 
         Invoice invoice = new Invoice("황인태", orders);

@@ -2,6 +2,7 @@ package org.intaehwang.chapter06.extractFunction;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.intaehwang.chapter06.comm.Order;
 
 import java.time.LocalDate;
 import java.util.List;

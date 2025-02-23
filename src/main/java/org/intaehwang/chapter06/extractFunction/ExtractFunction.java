@@ -1,6 +1,7 @@
 package org.intaehwang.chapter06.extractFunction;
 
 import lombok.extern.slf4j.Slf4j;
+import org.intaehwang.chapter06.comm.Order;
 
 import java.time.LocalDate;
 import java.util.List;
