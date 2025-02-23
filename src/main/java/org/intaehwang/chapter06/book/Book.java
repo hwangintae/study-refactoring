@@ -13,6 +13,10 @@ public class Book {
     }
 
     public void addReservation(String customer) {
+        zz_addReservation(customer, false);
+    }
+
+    public void zz_addReservation(String customer, boolean isPriority) {
         this.reservations.add(customer);
     }
 }
