@@ -1,5 +1,7 @@
 package org.intaehwang.chapter06.inlineFunction;
 
+import org.intaehwang.chapter06.comm.Customer;
+
 import java.util.ArrayList;
 import java.util.List;
 

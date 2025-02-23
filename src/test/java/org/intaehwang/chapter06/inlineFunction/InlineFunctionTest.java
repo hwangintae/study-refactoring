@@ -1,5 +1,6 @@
 package org.intaehwang.chapter06.inlineFunction;
 
+import org.intaehwang.chapter06.comm.Customer;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -15,7 +16,7 @@ class InlineFunctionTest {
         String location = "마포구";
 
         InlineFunction inlineFunction = new InlineFunction();
-        Customer customer = new Customer(name, location);
+        Customer customer = Customer.of(name, location);
 
         // when
         List<List<String>> results = inlineFunction.reportLines(customer);
