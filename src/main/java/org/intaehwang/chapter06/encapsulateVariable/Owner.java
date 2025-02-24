@@ -8,7 +8,7 @@ public class Owner {
     }
 
     public Person getDefaultOwner() {
-        return person;
+        return new Person(person.getFirstName(), person.getLastName());
     }
 
     public void setDefaultOwner(Person person) {
