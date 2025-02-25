@@ -37,7 +37,7 @@ class ReadingTest {
         Reading aReading = new Reading("ivan", 10, 5, 2017);
 
         // when
-        int basicChargeAmount = calculateBaseCharge(aReading);
+        int basicChargeAmount = aReading.baseCharge(aReading);
 
         // then
         assertThat(basicChargeAmount).isEqualTo(100);
@@ -59,9 +59,5 @@ class ReadingTest {
             return 50;
         }
         return 40;
-    }
-
-    public int calculateBaseCharge(Reading aReading) {
-        return baseRate(aReading.month(), aReading.year()) * aReading.quantity();
     }
 }
