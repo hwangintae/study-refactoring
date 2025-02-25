@@ -26,8 +26,7 @@ class StationTest {
 
         // when
         List<Reading> readings = Reading.readingsOutSideRange(station,
-                operatingPlan.temperatureFloor(),
-                operatingPlan.temperatureCeiling()
+                operatingPlan.getNumberRange()
         );
 
         // then
