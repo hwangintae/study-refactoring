@@ -24,7 +24,7 @@ class ReadingTest {
         Reading aReading = new Reading("ivan", 10, 5, 2017);
 
         // when
-        int taxableCharge = Math.max(0, aReading.baseCharge(aReading) - taxThreshold(aReading.year()));
+        int taxableCharge = aReading.taxableChargeFn(aReading);
 
         // then
         assertThat(taxableCharge).isEqualTo(60);
@@ -42,12 +42,5 @@ class ReadingTest {
         assertThat(basicChargeAmount).isEqualTo(100);
     }
 
-    public int taxThreshold(int month) {
-        if (month >= 6 && month <= 8) {
-            return 30;
-        } else if (month == 12 || month == 1 || month == 2) {
-            return 50;
-        }
-        return 40;
-    }
+
 }
