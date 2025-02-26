@@ -16,18 +16,28 @@ public class JavaExampleCode {
 
     public static long run(String[] args) throws IOException {
         if (args.length == 0) throw new RuntimeException("파일명을 입력하세요.");
+        CommandLine commandLine = new CommandLine();
+        commandLine.onlyCountReady = Stream.of(args).anyMatch(arg -> "-r".equals(arg));
+
         String fileName = args[args.length - 1];
-        return countOrders(args, fileName);
+
+
+        return countOrders(commandLine, args, fileName);
     }
 
-    private static long countOrders(String[] args, String fileName) throws IOException {
+    private static long countOrders(CommandLine commandLine, String[] args, String fileName) throws IOException {
         File input = Paths.get(fileName).toFile();
         ObjectMapper mapper = new ObjectMapper();
         Order[] orders = mapper.readValue(input, Order[].class);
-        if (Stream.of(args).anyMatch(arg -> "-r".equals(arg))) {
+
+        if (commandLine.onlyCountReady) {
             return Stream.of(orders)
                     .filter(o -> "ready".equals(o.status()))
                     .count();
         } else return orders.length;
+    }
+
+    private static  class CommandLine {
+        boolean onlyCountReady;
     }
 }
