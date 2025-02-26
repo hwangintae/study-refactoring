@@ -15,16 +15,18 @@ public class JavaExampleCode {
     }
 
     public static long run(String[] args) throws IOException {
+        return countOrders(parseCommandLine(args));
+    }
+
+    private static CommandLine parseCommandLine(String[] args) {
         if (args.length == 0) throw new RuntimeException("파일명을 입력하세요.");
         CommandLine commandLine = new CommandLine();
         commandLine.onlyCountReady = Stream.of(args).anyMatch(arg -> "-r".equals(arg));
         commandLine.fileName = args[args.length - 1];
-
-
-        return countOrders(commandLine, args);
+        return commandLine;
     }
 
-    private static long countOrders(CommandLine commandLine, String[] args) throws IOException {
+    private static long countOrders(CommandLine commandLine) throws IOException {
         File input = Paths.get(commandLine.fileName).toFile();
         ObjectMapper mapper = new ObjectMapper();
         Order[] orders = mapper.readValue(input, Order[].class);
