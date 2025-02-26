@@ -10,6 +10,7 @@ public class CommandLine {
 
     public CommandLine(String[] args) {
         this.args = args;
+        if (args.length == 0) throw new RuntimeException("파일명을 입력하세요.");
     }
 
     public String filename() {

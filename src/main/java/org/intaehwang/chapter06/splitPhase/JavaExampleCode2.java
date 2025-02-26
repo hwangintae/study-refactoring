@@ -15,7 +15,6 @@ public class JavaExampleCode2 {
     }
 
     public static long run(String[] args) throws IOException {
-        if (args.length == 0) throw new RuntimeException("파일명을 입력하세요.");
         CommandLine commandLine = new CommandLine(args);
 
         return countOrders(commandLine);
