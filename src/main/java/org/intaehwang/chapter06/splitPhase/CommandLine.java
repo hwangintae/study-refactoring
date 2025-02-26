@@ -9,4 +9,8 @@ public class CommandLine {
     public CommandLine(String[] args) {
         this.args = args;
     }
+
+    public String filename(String[] args) {
+        return args[args.length - 1];
+    }
 }
