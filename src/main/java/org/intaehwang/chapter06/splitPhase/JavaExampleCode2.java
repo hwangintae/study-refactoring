@@ -18,11 +18,11 @@ public class JavaExampleCode2 {
         if (args.length == 0) throw new RuntimeException("파일명을 입력하세요.");
         CommandLine commandLine = new CommandLine(args);
 
-        return countOrders(commandLine, args, commandLine.filename(args));
+        return countOrders(commandLine, args);
     }
 
-    private static long countOrders(CommandLine commandLine, String[] args, String fileName) throws IOException {
-        File input = Paths.get(fileName).toFile();
+    private static long countOrders(CommandLine commandLine, String[] args) throws IOException {
+        File input = Paths.get(commandLine.filename(args)).toFile();
         ObjectMapper mapper = new ObjectMapper();
         Order[] orders = mapper.readValue(input, Order[].class);
         if (Stream.of(args).anyMatch(arg -> "-r".equals(arg))) {
