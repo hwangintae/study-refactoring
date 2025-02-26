@@ -17,6 +17,10 @@ public class JavaExampleCode {
     public static long run(String[] args) throws IOException {
         if (args.length == 0) throw new RuntimeException("파일명을 입력하세요.");
         String fileName = args[args.length - 1];
+        return countOrders(args, fileName);
+    }
+
+    private static long countOrders(String[] args, String fileName) throws IOException {
         File input = Paths.get(fileName).toFile();
         ObjectMapper mapper = new ObjectMapper();
         Order[] orders = mapper.readValue(input, Order[].class);
