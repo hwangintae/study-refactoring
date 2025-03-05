@@ -1,37 +1,31 @@
 package org.intaehwang.chapter07.inlineClass;
 
 public class Shipment {
-    private TrackingInformation trackingInformation;
+    private String shippingCompany;
+    private String trackingNumber;
 
-    public Shipment(TrackingInformation trackingInformation) {
-        this.trackingInformation = trackingInformation;
-    }
-
-    public TrackingInformation getTrackingInformation() {
-        return trackingInformation;
-    }
-
-    public void setTrackingInformation(TrackingInformation trackingInformation) {
-        this.trackingInformation = trackingInformation;
+    public Shipment(String shippingCompany, String trackingNumber) {
+        this.shippingCompany = shippingCompany;
+        this.trackingNumber = trackingNumber;
     }
 
     public String getTrackingInfo() {
-        return this.trackingInformation.display();
+        return shippingCompany + ":" + trackingNumber;
     }
 
     public String getShippingCompany() {
-        return this.trackingInformation.getShippingCompany();
+        return this.shippingCompany;
     }
 
     public String getTrackingNumber() {
-        return this.trackingInformation.getTrackingNumber();
+        return this.trackingNumber;
     }
 
     public void setShippingCompany(String shippingCompany) {
-        this.trackingInformation.setShippingCompany(shippingCompany);
+        this.shippingCompany = shippingCompany;
     }
 
     public void setTrackingNumber(String trackingNumber) {
-        this.trackingInformation.setTrackingNumber(trackingNumber);
+        this.trackingNumber = trackingNumber;
     }
 }

@@ -8,19 +8,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class ShipmentTest {
 
     private Shipment shipment;
-    private TrackingInformation trackingInformation;
 
     @BeforeEach
     void setUp() {
-        trackingInformation = new TrackingInformation("우직이");
-        trackingInformation.setTrackingNumber("123456789");
-        shipment = new Shipment(trackingInformation);
+        shipment = new Shipment("우직이", "123456789");
     }
 
     @Test
     void testConstructorAndGetters() {
-        assertEquals("우직이", shipment.getTrackingInformation().getShippingCompany());
-        assertEquals("123456789", shipment.getTrackingInformation().getTrackingNumber());
+        assertEquals("우직이", shipment.getShippingCompany());
+        assertEquals("123456789", shipment.getTrackingNumber());
     }
 
     @Test
@@ -30,23 +27,12 @@ class ShipmentTest {
 
     @Test
     void testSetTrackingInformation() {
-        TrackingInformation newTracking = new TrackingInformation("행복이");
-        newTracking.setTrackingNumber("987654321");
-        shipment.setTrackingInformation(newTracking);
+        shipment.setShippingCompany("행복이");
+        shipment.setTrackingNumber("987654321");
 
-        assertEquals("행복이", shipment.getTrackingInformation().getShippingCompany());
-        assertEquals("987654321", shipment.getTrackingInformation().getTrackingNumber());
+        assertEquals("행복이", shipment.getShippingCompany());
+        assertEquals("987654321", shipment.getTrackingNumber());
         assertEquals("행복이:987654321", shipment.getTrackingInfo());
-    }
-
-    @Test
-    void testTrackingInformationSetters() {
-        trackingInformation.setShippingCompany("행복이");
-        trackingInformation.setTrackingNumber("111222333");
-
-        assertEquals("행복이", trackingInformation.getShippingCompany());
-        assertEquals("111222333", trackingInformation.getTrackingNumber());
-        assertEquals("행복이:111222333", trackingInformation.display());
     }
 
 }
