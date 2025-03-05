@@ -2,17 +2,16 @@ package org.intaehwang.chapter07.extractClass;
 
 public class Person {
     private String name;
-    private String officeAreaCode;
-    private String officeNumber;
+
+    private final TelephoneNumber telephoneNumber;
 
     public Person(String name, String officeAreaCode, String officeNumber) {
         this.name = name;
-        this.officeAreaCode = officeAreaCode;
-        this.officeNumber = officeNumber;
+        this.telephoneNumber = new TelephoneNumber(officeAreaCode, officeNumber);
     }
 
     public String telephoneNumber() {
-        return "(" + officeAreaCode + ")" + officeNumber;
+        return this.telephoneNumber.toString();
     }
 
     public String getName() {
@@ -20,11 +19,11 @@ public class Person {
     }
 
     public String getOfficeAreaCode() {
-        return this.officeAreaCode;
+        return this.telephoneNumber.getAreaCode();
     }
 
     public String getOfficeNumber() {
-        return this.officeNumber;
+        return this.telephoneNumber.getNumber();
     }
 
     public void setName(String name) {
@@ -32,11 +31,10 @@ public class Person {
     }
 
     public void setOfficeAreaCode(String officeAreaCode) {
-        this.officeAreaCode = officeAreaCode;
+        this.telephoneNumber.setAreaCode(officeAreaCode);
     }
 
     public void setOfficeNumber(String officeNumber) {
-        this.officeNumber = officeNumber;
+        this.telephoneNumber.setNumber(officeNumber);
     }
-
 }
