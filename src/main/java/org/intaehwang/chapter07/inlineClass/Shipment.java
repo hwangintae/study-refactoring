@@ -18,4 +18,20 @@ public class Shipment {
     public String getTrackingInfo() {
         return this.trackingInformation.display();
     }
+
+    public String getShippingCompany() {
+        return this.trackingInformation.getShippingCompany();
+    }
+
+    public String getTrackingNumber() {
+        return this.trackingInformation.getTrackingNumber();
+    }
+
+    public void setShippingCompany(String shippingCompany) {
+        this.trackingInformation.setShippingCompany(shippingCompany);
+    }
+
+    public void setTrackingNumber(String trackingNumber) {
+        this.trackingInformation.setTrackingNumber(trackingNumber);
+    }
 }
