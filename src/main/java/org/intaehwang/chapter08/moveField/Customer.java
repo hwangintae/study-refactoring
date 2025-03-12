@@ -10,12 +10,16 @@ public class Customer {
 
     public Customer(String name, double discountRate) {
         this.name = name;
-        this.discountRate = discountRate;
+        setDiscountRate(discountRate);
         this.customerContract = new CustomerContract(Clock.dateToday());
     }
 
+    private void setDiscountRate(double aNumber) {
+        this.customerContract.setDiscountRate(aNumber);
+    }
+
     public void becomePreferred() {
-        this.discountRate += 0.03;
+        setDiscountRate(this.discountRate + 0.03);
     }
 
     public double applyDiscount(Amount amount) {
