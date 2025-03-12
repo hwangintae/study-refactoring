@@ -16,14 +16,14 @@ public class Render {
     public String renderPhoto(Photo p) {
         return String.join("\n", List.of(
                 "<div>",
-                "<p>" + p.getTitle() + "</p>",
                 emitPhotoData(p),
                 "</div>"
-        ))
+        ));
     }
 
     public String emitPhotoData(Photo aPhoto) {
         List<String> result = List.of(
+                "<p>" + aPhoto.getTitle() + "</p>",
                 "<p>위치" + aPhoto.getLocation() + "</p>",
                 "<p>날짜" + aPhoto.getDate().toString() + "</p>"
         );
