@@ -12,6 +12,7 @@ public class Render {
         outStream.write("<p>" + person.getName() + "</p>\n");
         renderPhoto(outStream, person.getPhoto());
         emitPhotoData(outStream, person.getPhoto());
+        outStream.write("<p>위치" + person.getPhoto().getLocation() + "</p>");
     }
 
     public void listRecentPhotos(OutputStreamWriter outStream, List<Photo> photos) throws IOException {
@@ -21,16 +22,11 @@ public class Render {
                     try {
                         outStream.write("<div>\n");
                         emitPhotoData(outStream, p);
+                        outStream.write("<p>위치" + p.getLocation() + "</p>");
                         outStream.write("</div>\n");
                     } catch (Exception ignored) {
                     }
                 });
-    }
-
-    public void emitPhotoData(OutputStreamWriter outStream, Photo aPhoto) throws IOException {
-        outStream.write("<p>제목" + aPhoto.getTitle() + "</p>");
-        outStream.write("<p>날짜" + aPhoto.getDate().toString() + "</p>");
-        outStream.write("<p>위치" + aPhoto.getLocation() + "</p>");
     }
 
     public LocalDate recentDateCutoff() {
@@ -38,6 +34,10 @@ public class Render {
     }
 
     public void renderPhoto(OutputStreamWriter outStream, Photo p) throws IOException {
-        emitPhotoData(outStream, p);
+    }
+
+    public void emitPhotoData(OutputStreamWriter outStream, Photo photo) throws IOException {
+        outStream.write("<p>제목" + photo.getTitle() + "</p>");
+        outStream.write("<p>날짜" + photo.getDate().toString() + "</p>");
     }
 }
