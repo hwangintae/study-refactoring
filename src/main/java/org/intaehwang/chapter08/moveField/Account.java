@@ -11,6 +11,10 @@ public class Account {
     public Account(int number, AccountType type, double interestRate) {
         this.number = number;
         this.type = type;
+
+        if (interestRate != type.getInterestRate()) {
+            throw new IllegalArgumentException("Interest rate must be equal to " + type.getInterestRate());
+        }
         this.interestRate = interestRate;
     }
 }
