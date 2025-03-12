@@ -6,4 +6,8 @@ public class Clock {
     public static LocalDate dateToday() {
         return LocalDate.now();
     }
+
+    public static LocalDate cutOff() {
+        return LocalDate.now();
+    }
 }
