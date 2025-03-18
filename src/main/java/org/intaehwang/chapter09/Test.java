@@ -1,8 +1,11 @@
 package org.intaehwang.chapter09;
 
+import org.intaehwang.chapter09.renameField.Organization;
 import org.intaehwang.chapter09.splitVariable.Scenario;
 
 public class Test {
+
+    private Organization organization = new Organization("애크미 구스베리", "GB");
 
     public double distanceTravelled(Scenario scenario, int time) {
         double result;
