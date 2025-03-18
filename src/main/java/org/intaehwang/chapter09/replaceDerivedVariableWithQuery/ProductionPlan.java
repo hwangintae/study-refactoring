@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductionPlan {
-    private int production;
+    private Integer production;
     private List<Adjustment> adjustments = new ArrayList<>();
 
     public ProductionPlan() {}
@@ -15,6 +15,7 @@ public class ProductionPlan {
     }
 
     public int getProduction() {
+        if (this.production == null) this.production = 0;
         assert this.production == calculatedProduction();
         return this.production;
     }

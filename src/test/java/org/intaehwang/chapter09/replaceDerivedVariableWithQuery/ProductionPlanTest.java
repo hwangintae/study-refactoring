@@ -40,7 +40,7 @@ class ProductionPlanTest {
     }
 
     @Test
-    public void productionIsNotZero() {
+    public void noArgsConstructor() {
         // given
         ProductionPlan productionPlan = new ProductionPlan();
 
