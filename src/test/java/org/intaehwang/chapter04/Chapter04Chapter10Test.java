@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class Chapter04Test {
+class Chapter04Chapter10Test {
 
     @Test
     public void shortfailTest() {

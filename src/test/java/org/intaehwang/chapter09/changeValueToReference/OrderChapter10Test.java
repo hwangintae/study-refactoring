@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-class OrderTest {
+class OrderChapter10Test {
 
 
     @Test

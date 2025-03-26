@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ExtractVariableTest {
+class ExtractVariableChapter10Test {
     
     @Test
     @DisplayName("quantity 가 특정 개수 이하일 경우 추가 할인을 받을 수 없다.")

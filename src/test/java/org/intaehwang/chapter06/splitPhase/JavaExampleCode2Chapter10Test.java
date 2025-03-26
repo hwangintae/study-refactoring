@@ -11,7 +11,7 @@ import java.nio.file.Path;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class JavaExampleCodeTest {
+class JavaExampleCode2Chapter10Test {
     @TempDir
     Path tempDir;
 

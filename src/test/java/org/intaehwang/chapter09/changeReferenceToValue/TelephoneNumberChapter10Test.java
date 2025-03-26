@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class TelephoneNumberTest {
+class TelephoneNumberChapter10Test {
 
     @Test
     public void isEquals() {

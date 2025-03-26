@@ -9,7 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.groups.Tuple.*;
 
-class BookTest {
+class BookChapter10Test {
 
     @Test
     public void inNewEnglandTest() {

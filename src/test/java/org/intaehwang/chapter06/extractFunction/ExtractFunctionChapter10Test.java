@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ExtractFunctionTest {
+class ExtractFunctionChapter10Test {
 
     @Test
     public void printOwingTest() {

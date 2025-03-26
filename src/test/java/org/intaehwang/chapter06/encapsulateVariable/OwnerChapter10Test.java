@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class OwnerTest {
+class OwnerChapter10Test {
 
     @Test
     @DisplayName("owner2의 lastName을 수정해도 owner1의 lastName은 수정되지 않는다.")

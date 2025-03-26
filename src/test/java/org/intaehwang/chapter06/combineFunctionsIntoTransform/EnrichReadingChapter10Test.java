@@ -1,19 +1,17 @@
-package org.intaehwang.chapter06.combineFunctionsIntoClass;
-
+package org.intaehwang.chapter06.combineFunctionsIntoTransform;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
-class ReadingTest {
-
+class EnrichReadingChapter10Test {
     @Test
     public void client1() {
         // given
         Reading aReading = new Reading("ivan", 10, 5, 2017);
+        EnrichReading enrichReading = EnrichReading.create(aReading);
 
         // when
-        int baseCharge = aReading.baseCharge(aReading);
+        int baseCharge = enrichReading.getBaseCharge();
 
         assertThat(baseCharge).isEqualTo(100);
     }
@@ -22,9 +20,10 @@ class ReadingTest {
     public void client2() {
         // given
         Reading aReading = new Reading("ivan", 10, 5, 2017);
+        EnrichReading enrichReading = EnrichReading.create(aReading);
 
         // when
-        int taxableCharge = aReading.taxableChargeFn(aReading);
+        int taxableCharge = enrichReading.getTaxableCharge();
 
         // then
         assertThat(taxableCharge).isEqualTo(60);
@@ -34,13 +33,14 @@ class ReadingTest {
     public void client3() {
         // given
         Reading aReading = new Reading("ivan", 10, 5, 2017);
+        EnrichReading enrichReading = EnrichReading.create(aReading);
 
         // when
-        int basicChargeAmount = aReading.baseCharge(aReading);
+        int basicChargeAmount = enrichReading.getBaseCharge();
 
         // then
         assertThat(basicChargeAmount).isEqualTo(100);
+
+
     }
-
-
 }

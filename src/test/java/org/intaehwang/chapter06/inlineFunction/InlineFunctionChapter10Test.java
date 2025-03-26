@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class InlineFunctionTest {
+class InlineFunctionChapter10Test {
 
     @Test
     public void reportLinesTest() {

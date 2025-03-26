@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.in;
 
-class PeopleTest {
+class PeopleChapter10Test {
 
     @Test
     public void test() {

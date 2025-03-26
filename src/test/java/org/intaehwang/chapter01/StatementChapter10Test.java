@@ -8,7 +8,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class StatementTest {
+class StatementChapter10Test {
 
     @Test
     public void statementTest() {
