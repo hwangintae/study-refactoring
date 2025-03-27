@@ -2,6 +2,8 @@ package org.intaehwang.chapter10;
 
 import org.intaehwang.chapter10.consolidateConditionalExpression.Employee;
 import org.intaehwang.chapter10.decomposeConditional.Plan;
+import org.intaehwang.chapter10.introduceSpecialCase.Customer;
+import org.intaehwang.chapter10.introduceSpecialCase.UnknownCustomer;
 import org.intaehwang.chapter10.replaceConditionalWithPolymorphism.*;
 import org.intaehwang.chapter10.replaceNestedConditionalWithGuardClauses.Instrument;
 import org.intaehwang.chapter10.replaceNestedConditionalWithGuardClauses.PayAmount;
@@ -12,6 +14,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Chapter10Test {
+    private static final int NEW_PLAN = 110;
 
     public Chapter10Test() {
     }
@@ -97,6 +100,30 @@ public class Chapter10Test {
                 .anyMatch(v -> "중국".equals(v.getZone()))) {
             return new ExperiencedChinaRating(voyage, histories);
         } else return new Rating(voyage, histories);
+    }
+
+    public void client1(Customer customer) {
+        String customerName = customer.getName();
+    }
+
+    public void client2(Customer customer) {
+        int plan = customer.getBillingPlan();
+    }
+
+    public void client3(Customer customer) {
+        customer.setBillingPlan(NEW_PLAN);
+    }
+
+    public void client4(Customer customer) {
+        int weeksDelinquent = customer.getPaymentHistory().getWeekDelinquentInLastYear();
+    }
+
+    public boolean isUnknown(Object arg) {
+        if (!(arg instanceof Customer) || arg instanceof UnknownCustomer) {
+            throw new IllegalArgumentException("잘못된 값과 비교");
+        }
+
+        return ((Customer) arg).isUnknown();
     }
 }
 
