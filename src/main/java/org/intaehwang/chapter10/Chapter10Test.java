@@ -125,6 +125,28 @@ public class Chapter10Test {
 
         return ((Customer) arg).isUnknown();
     }
+
+    public void ttteeesssttt(List<String> people) {
+        checkForMiscreants(people);
+    }
+
+    public void checkForMiscreants(List<String> people) {
+        for (String p : people) {
+            if ("조커".equals(p)) {
+                sendAlert();
+                return;
+            }
+            if ("사루만".equals(p)) {
+                sendAlert();
+                return;
+            }
+        }
+    }
+
+
+    public void sendAlert() {
+
+    }
 }
 
 
