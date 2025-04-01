@@ -1,5 +1,7 @@
 package org.intaehwang.chapter11;
 
+import org.intaehwang.chapter11.preserveWholeObject.DayTempRange;
+import org.intaehwang.chapter11.preserveWholeObject.Room;
 import org.intaehwang.chapter11.removeFlagArgument.Order;
 import org.intaehwang.chapter11.removeFlagArgument.PlaceOn;
 import org.junit.jupiter.api.Test;
@@ -78,5 +80,29 @@ class Chapter11TestTest {
 
         // then
         assertThat(result).isEqualTo(8);
+    }
+
+    @Test
+    public void checkWithinRangeTest() {
+        // given
+        Room room = new Room(new DayTempRange(9, 21));
+
+        // when
+        String result = Chapter11Test.checkWithinRange(room);
+
+        // then
+        assertThat(result).isEqualTo("방 온도가 지정 범위를 벗어났습니다.");
+    }
+
+    @Test
+    public void checkWithinRangeTest2() {
+        // given
+        Room room = new Room(new DayTempRange(9, 21));
+
+        // when
+        String result = Chapter11Test.checkWithinRange2(room);
+
+        // then
+        assertThat(result).isEqualTo("방 온도가 지정 범위를 벗어났습니다.");
     }
 }

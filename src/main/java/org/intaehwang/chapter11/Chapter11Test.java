@@ -1,11 +1,17 @@
 package org.intaehwang.chapter11;
 
+import lombok.extern.slf4j.Slf4j;
 import org.intaehwang.chapter11.parameterizeFunction.Person;
 import org.intaehwang.chapter11.parameterizeFunction.Usd;
+import org.intaehwang.chapter11.preserveWholeObject.DayTempRange;
+import org.intaehwang.chapter11.preserveWholeObject.HeatingPlan;
+import org.intaehwang.chapter11.preserveWholeObject.Room;
+import org.intaehwang.chapter11.preserveWholeObject.TemperatureRange;
 import org.intaehwang.chapter11.removeFlagArgument.Order;
 
 import java.util.List;
 
+@Slf4j
 public class Chapter11Test {
 
     public void alertForMiscreant(List<String> people) {
@@ -88,4 +94,23 @@ public class Chapter11Test {
         return order.getPlaceOn().plusDays(2 + deliveryTime);
     }
 
+    public static String checkWithinRange(Room room) {
+        HeatingPlan aPlan = new HeatingPlan(new TemperatureRange(10, 20));
+
+        if (!aPlan.withinRange(room.getDayTempRange()))
+            return "방 온도가 지정 범위를 벗어났습니다.";
+
+        return "";
+    }
+
+    public static String checkWithinRange2(Room room) {
+        DayTempRange tempRange = room.getDayTempRange();
+        HeatingPlan aPlan = new HeatingPlan(new TemperatureRange(10, 20));
+        boolean isWithinRange = aPlan.xxNEWwithinRange(aPlan, tempRange);
+
+        if (!isWithinRange)
+            return "방 온도가 지정 범위를 벗어났습니다.";
+
+        return "";
+    }
 }
