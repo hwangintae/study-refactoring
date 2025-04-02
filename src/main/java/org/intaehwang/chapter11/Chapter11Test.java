@@ -8,6 +8,10 @@ import org.intaehwang.chapter11.preserveWholeObject.HeatingPlan;
 import org.intaehwang.chapter11.preserveWholeObject.Room;
 import org.intaehwang.chapter11.preserveWholeObject.TemperatureRange;
 import org.intaehwang.chapter11.removeFlagArgument.Order;
+import org.intaehwang.chapter11.replaceFunctionWithCommand.Candidate;
+import org.intaehwang.chapter11.replaceFunctionWithCommand.MedicalExam;
+import org.intaehwang.chapter11.replaceFunctionWithCommand.Scorer;
+import org.intaehwang.chapter11.replaceFunctionWithCommand.ScoringGuide;
 
 import java.util.List;
 
@@ -112,5 +116,9 @@ public class Chapter11Test {
             return "방 온도가 지정 범위를 벗어났습니다.";
 
         return "";
+    }
+
+    public static int score(Candidate candidate, MedicalExam medicalExam, ScoringGuide scoringGuide) {
+        return new Scorer(candidate, medicalExam, scoringGuide).execute();
     }
 }
