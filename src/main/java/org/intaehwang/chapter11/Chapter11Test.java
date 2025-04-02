@@ -106,7 +106,7 @@ public class Chapter11Test {
     public static String checkWithinRange2(Room room) {
         DayTempRange tempRange = room.getDayTempRange();
         HeatingPlan aPlan = new HeatingPlan(new TemperatureRange(10, 20));
-        boolean isWithinRange = aPlan.xxNEWwithinRange(aPlan, tempRange);
+        boolean isWithinRange = aPlan.xxNEWwithinRange(tempRange);
 
         if (!isWithinRange)
             return "방 온도가 지정 범위를 벗어났습니다.";
