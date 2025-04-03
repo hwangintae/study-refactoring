@@ -193,4 +193,30 @@ class Chapter11TestTest {
         // then
         assertThat(result).isEqualTo(42);
     }
+
+    @Test
+    public void calculateShippingCostsTest1() {
+        // given
+
+        org.intaehwang.chapter11.replcaeErrorCodeWithException.Order order = new org.intaehwang.chapter11.replcaeErrorCodeWithException.Order("ko");
+
+        // when
+        int result = Chapter11Test.calculateShippingCosts(order);
+
+        // then
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void calculateShippingCostsTest2() {
+        // given
+
+        org.intaehwang.chapter11.replcaeErrorCodeWithException.Order order = new org.intaehwang.chapter11.replcaeErrorCodeWithException.Order("kor");
+
+        // when
+        int result = Chapter11Test.calculateShippingCosts(order);
+
+        // then
+        assertThat(result).isEqualTo(-23);
+    }
 }

@@ -15,6 +15,8 @@ import org.intaehwang.chapter11.replaceFunctionWithCommand.Candidate;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.MedicalExam;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.Scorer;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.ScoringGuide;
+import org.intaehwang.chapter11.replcaeErrorCodeWithException.CountryData;
+import org.intaehwang.chapter11.replcaeErrorCodeWithException.ShippingRules;
 import org.intaehwang.chapter11.returnModifiedValue.Points;
 
 import java.awt.*;
@@ -159,11 +161,37 @@ public class Chapter11Test {
 
     public static double calculateTime() {
         return 1.0;
-
     }
 
     public static double calculateDistance() {
         return 1.0;
+    }
+
+    public static void azsdfasdfasdfasdf() {
+        org.intaehwang.chapter11.replcaeErrorCodeWithException.Order order = new org.intaehwang.chapter11.replcaeErrorCodeWithException.Order("ko");
+
+        try {
+            calculateShippingCosts(order);
+        } catch (Exception e) {
+            if (e instanceof IllegalArgumentException) {
+                log.info("에러 추가");
+            } else {
+                throw new RuntimeException("error");
+            }
+        }
+    }
+
+    public static int calculateShippingCosts(org.intaehwang.chapter11.replcaeErrorCodeWithException.Order order) {
+        int shippingRules = localShippingRules(order.getCountry());
+
+        if (shippingRules < 0) return shippingRules;
+        return 0;
+    }
+
+    public static int localShippingRules(String country) {
+        int data = CountryData.shippingRules(country);
+        if (data > 0) return new ShippingRules(data).role();
+        else throw new IllegalArgumentException("error");
     }
 
 }
