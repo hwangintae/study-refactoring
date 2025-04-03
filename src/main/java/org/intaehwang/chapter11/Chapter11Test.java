@@ -8,6 +8,9 @@ import org.intaehwang.chapter11.preserveWholeObject.HeatingPlan;
 import org.intaehwang.chapter11.preserveWholeObject.Room;
 import org.intaehwang.chapter11.preserveWholeObject.TemperatureRange;
 import org.intaehwang.chapter11.removeFlagArgument.Order;
+import org.intaehwang.chapter11.replaceCommandWithFunction.ChargeCalculator;
+import org.intaehwang.chapter11.replaceCommandWithFunction.Customer;
+import org.intaehwang.chapter11.replaceCommandWithFunction.Provider;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.Candidate;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.MedicalExam;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.Scorer;
@@ -120,5 +123,13 @@ public class Chapter11Test {
 
     public static int score(Candidate candidate, MedicalExam medicalExam, ScoringGuide scoringGuide) {
         return new Scorer(candidate, medicalExam, scoringGuide).execute();
+    }
+
+    public static int calculateCharge(Customer customer, int usage, Provider provider) {
+        return charge(customer, usage, provider);
+    }
+
+    private static int charge(Customer customer, int usage, Provider provider) {
+        return ChargeCalculator.charge(customer, usage, provider);
     }
 }

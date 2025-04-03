@@ -4,6 +4,8 @@ import org.intaehwang.chapter11.preserveWholeObject.DayTempRange;
 import org.intaehwang.chapter11.preserveWholeObject.Room;
 import org.intaehwang.chapter11.removeFlagArgument.Order;
 import org.intaehwang.chapter11.removeFlagArgument.PlaceOn;
+import org.intaehwang.chapter11.replaceCommandWithFunction.Customer;
+import org.intaehwang.chapter11.replaceCommandWithFunction.Provider;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.Candidate;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.MedicalExam;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.ScoringGuide;
@@ -163,5 +165,19 @@ class Chapter11TestTest {
 
         // then
         assertThat(result).isEqualTo(-10);
+    }
+
+    @Test
+    public void calculateChargeTest() {
+        // given
+        Customer customer = new Customer(10);
+        int usage = 2;
+        Provider provider = new Provider(11);
+
+        // when
+        int result = Chapter11Test.calculateCharge(customer, usage, provider);
+
+        // then
+        assertThat(result).isEqualTo(31);
     }
 }
