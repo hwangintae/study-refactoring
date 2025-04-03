@@ -15,7 +15,9 @@ import org.intaehwang.chapter11.replaceFunctionWithCommand.Candidate;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.MedicalExam;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.Scorer;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.ScoringGuide;
+import org.intaehwang.chapter11.returnModifiedValue.Points;
 
+import java.awt.*;
 import java.util.List;
 
 @Slf4j
@@ -132,4 +134,36 @@ public class Chapter11Test {
     private static int charge(Customer customer, int usage, Provider provider) {
         return ChargeCalculator.charge(customer, usage, provider);
     }
+
+    public static double gpsList(Points points) {
+        double totalAscent = calculateAscent(points);
+        double totalTime = calculateTime();
+        double totalDistance = calculateDistance();
+
+        double pace = totalTime / 60 / totalDistance;
+
+        return pace;
+    }
+
+
+    public static double calculateAscent(Points points) {
+        double totalAscent = 0;
+
+        for (int i = 1; i < points.length(); i++) {
+            double verticalChange = points.get(i) - points.get(i - 1);
+            totalAscent += (verticalChange > 0) ? verticalChange : 0;
+        }
+
+        return totalAscent;
+    }
+
+    public static double calculateTime() {
+        return 1.0;
+
+    }
+
+    public static double calculateDistance() {
+        return 1.0;
+    }
+
 }

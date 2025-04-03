@@ -9,6 +9,7 @@ import org.intaehwang.chapter11.replaceCommandWithFunction.Provider;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.Candidate;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.MedicalExam;
 import org.intaehwang.chapter11.replaceFunctionWithCommand.ScoringGuide;
+import org.intaehwang.chapter11.returnModifiedValue.Points;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -179,5 +180,17 @@ class Chapter11TestTest {
 
         // then
         assertThat(result).isEqualTo(31);
+    }
+
+    @Test
+    public void gpsListTest() {
+        // given
+        Points points = new Points(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0);
+
+        // when
+        double result = Chapter11Test.gpsList(points);
+
+        // then
+        assertThat(result).isEqualTo(42);
     }
 }
