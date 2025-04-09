@@ -1,8 +1,9 @@
 package org.intaehwang.chapter12.replaceTypeCodeWithSubclass;
 
-public class Salesperson extends Employee {
-    public Salesperson(String name) {
-        super(name);
+public class Salesperson extends EmployeeType {
+
+    public Salesperson(String value) {
+        super(value);
     }
 
     public String getType() {
