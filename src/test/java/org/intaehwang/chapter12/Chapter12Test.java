@@ -86,4 +86,16 @@ class Chapter12Test {
                 );
     }
 
+    @Test
+    public void employeeAnnualCostTest() {
+        // given
+        org.intaehwang.chapter12.extractSuperclass.Employee intae = new org.intaehwang.chapter12.extractSuperclass.Employee(1L, "intae", 100);
+
+        // when
+        int result = intae.annualCost();
+
+        // then
+        assertThat(result).isEqualTo(12 * 100);
+    }
+
 }

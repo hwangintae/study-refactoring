@@ -1,5 +1,6 @@
 package org.intaehwang.chapter12;
 
+import org.intaehwang.chapter12.extractSuperclass.Employee;
 import org.intaehwang.chapter12.removeSubclass.People;
 import org.intaehwang.chapter12.removeSubclass.Person;
 
