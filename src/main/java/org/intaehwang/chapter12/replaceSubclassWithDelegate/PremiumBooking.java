@@ -10,13 +10,6 @@ public class PremiumBooking extends Booking {
         this.extras = extras;
     }
 
-    public static PremiumBooking createPremiumBooking(Show show, Instant date, Extras extras) {
-        Booking result = Booking.createBooking(show, date);
-        result.bePremium(extras);
-
-        return result;
-    }
-
     @Override
     public double basePrice() {
         return Math.round(super.basePrice() + this.extras.premiumFee());
