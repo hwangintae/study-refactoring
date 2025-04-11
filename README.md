@@ -23,3 +23,18 @@
 7. chapter07 캡슐화
    - [[학습기록]](https://github.com/hwangintae/study-refactoring/blob/main/src/main/java/org/intaehwang/chapter07/chapter07.md)
    - [[commit 목록]](https://github.com/hwangintae/study-refactoring/pull/5/commits)
+8. chapter08 기능 이동
+   - [[학습기록]](https://github.com/hwangintae/study-refactoring/blob/main/src/main/java/org/intaehwang/chapter08/chapter08.md)
+   - [[commit 목록]](https://github.com/hwangintae/study-refactoring/pull/6/commits)
+9. chapter09 데이터 조직화
+   - [[학습기록]](https://github.com/hwangintae/study-refactoring/blob/main/src/main/java/org/intaehwang/chapter09/chapter09.md)
+   - [[commit 목록]](https://github.com/hwangintae/study-refactoring/pull/7/commits)
+10. chapter10 조건부 로직 간소화
+   - [[학습기록]](https://github.com/hwangintae/study-refactoring/blob/main/src/main/java/org/intaehwang/chapter10/chapter10.md)
+   - [[commit 목록]](https://github.com/hwangintae/study-refactoring/pull/8/commits)
+11. chapter11 API 리팩터링
+   - [[학습기록]](https://github.com/hwangintae/study-refactoring/blob/main/src/main/java/org/intaehwang/chapter11/chapter11.md)
+   - [[commit 목록]](https://github.com/hwangintae/study-refactoring/pull/9/commits)
+12. chapter12 상속 다루기
+   - [[학습기록]](https://github.com/hwangintae/study-refactoring/blob/main/src/main/java/org/intaehwang/chapter12/chapter12.md)
+   - [[commit 목록]](https://github.com/hwangintae/study-refactoring/pull/10/commits)
